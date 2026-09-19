@@ -1,3 +1,6 @@
+//define como se entra y sale por la api
+//los request son lo que el cliente manda y tiene restricciones
+//o validaciones
 package cl.dsy1104.fonda.dto;
 
 import cl.dsy1104.fonda.model.TipoBebida;

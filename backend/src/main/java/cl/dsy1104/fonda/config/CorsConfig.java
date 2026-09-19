@@ -1,0 +1,22 @@
+package cl.dsy1104.fonda.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+//para que el frontend no bloquee las peticiones al backend
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+
+    @Value("${fonda.cors.origen}")
+    private String origenPermitido;
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOrigins(origenPermitido)
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
+                .allowedHeaders("*");
+    }
+}

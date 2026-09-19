@@ -1,3 +1,5 @@
+
+//modela reglas y decisiones de la app, reglas de negocio 
 package cl.dsy1104.fonda.service;
 
 import cl.dsy1104.fonda.model.Bebida;
