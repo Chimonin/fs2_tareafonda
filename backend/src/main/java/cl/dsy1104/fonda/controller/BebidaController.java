@@ -1,3 +1,10 @@
+//lee lo que viene en la url como una peticion http
+//puerta de entrada de la api
+//dispara validaciones
+//llama al service correspondiente
+//arma la respuesta http
+
+//recibe la petition http, llama al service y arma la respuesta http
 package cl.dsy1104.fonda.controller;
 
 import cl.dsy1104.fonda.dto.BebidaRequest;

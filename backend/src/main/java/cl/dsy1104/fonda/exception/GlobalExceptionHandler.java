@@ -1,3 +1,4 @@
+//traducen los errores en respuestas http
 package cl.dsy1104.fonda.exception;
 
 import org.springframework.http.HttpStatus;
