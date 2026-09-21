@@ -14,6 +14,7 @@ public class Bebida {
     @Enumerated(EnumType.STRING)
     private TipoBebida tipo;
 
+    @Column(name = "volumen_ml")
     private int volumenML;
     private int stock;
 
