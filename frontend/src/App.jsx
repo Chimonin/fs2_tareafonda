@@ -1,6 +1,9 @@
 import { Container } from "react-bootstrap";
+import { useState } from "react";
 import BebidaList from "./components/BebidaList";
 import BebidaForm from "./components/BebidaForm";
+import VentaForm from "./components/VentaForm";
+import VentaHistorial from "./components/VentaHistorial";
 
 /**
  * Estructura sugerida de la interfaz. Cada bloque es un componente propio
@@ -19,7 +22,11 @@ export default function App() {
   //null es crear bebida, si ya hay bebida es editar
   const [bebidaSeleccionada, setBebidaSeleccionada] = useState(null);
 
+  //aumenta cada vez para avisarle a la lista de bebidas que recargue
   const [refrescoTrigger, setRefrescoTrigger] = useState(0);
+
+  //aumenta cada vez para avisarle al historial que recargue
+  const [refrescoVentasTrigger, setRefrescoVentasTrigger] = useState(0);
 
   //el boton de editar llama a oneditar, y oneditar llama a manejareditar
   //manejar editar setea la bebida
@@ -34,16 +41,36 @@ export default function App() {
     setBebidaSeleccionada(null);
     setRefrescoTrigger((prev) => prev + 1);
   }
+
+  function manejarVentaRegistrada() {
+    setRefrescoVentasTrigger((prev) => prev + 1);
+    setRefrescoTrigger((prev) => prev + 1); // el stock tambien cambio
+  }
+
+
   return (
     <Container className="py-4">
       <h1 className="mb-1">Fonda San Belarmino</h1>
       <p className="text-muted">Control de bebidas y ventas</p>
 
       {/* TODO: montar aqui los componentes de la interfaz. */}
+
+      <BebidaForm
+        key={bebidaSeleccionada?.id ?? "nuevo"}
+        bebidaEditar={bebidaSeleccionada}
+        onGuardado={manejarGuardado}
+      />
+
       <BebidaList
         onEditar={manejarEditar}
         refrescoTrigger={refrescoTrigger}
       />
+
+      <VentaForm onRegistrada={manejarVentaRegistrada} />
+
+      <VentaHistorial refrescoTrigger={refrescoVentasTrigger} />
+
+
     </Container>
   );
 }
