@@ -39,7 +39,7 @@ export default function BebidaList({ onEditar, refrescoTrigger }) {
             />
 
             {/**/}
-            {/*Si error tiene algun valor, muestra la elerta*/}
+            {/*Si error tiene algun valor, muestra la alerta*/}
             {/*Si error es null, no muestra nada*/}
             {error && <Alert variant="danger">{error}</Alert>}
 
